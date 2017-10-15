@@ -17,6 +17,8 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
+		FA3926E11F91229600A92BC5 /* uber.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3926E01F91229600A92BC5 /* uber.jpg */; };
+		FA3926E31F9130C100A92BC5 /* uber-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3926E21F9130C100A92BC5 /* uber-image.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		FA3926E01F91229600A92BC5 /* uber.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = uber.jpg; path = ../../../../Downloads/uber.jpg; sourceTree = "<group>"; };
+		FA3926E21F9130C100A92BC5 /* uber-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "uber-image.jpg"; path = "../../../../Downloads/uber-image.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				FA3926E01F91229600A92BC5 /* uber.jpg */,
+				FA3926E21F9130C100A92BC5 /* uber-image.jpg */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -173,7 +179,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
+				FA3926E11F91229600A92BC5 /* uber.jpg in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
+				FA3926E31F9130C100A92BC5 /* uber-image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

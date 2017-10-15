@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-            ParseMutableClientConfiguration.applicationId = "myappid"
-            ParseMutableClientConfiguration.clientKey = "mymasterkey"
+            ParseMutableClientConfiguration.applicationId = "4a08241007741397615eaed52b7915a71327a8ed"
+            ParseMutableClientConfiguration.clientKey = "63382451db26f2ac79b3332bcb4fca05727d2050"
             ParseMutableClientConfiguration.server = "http://ec2-18-221-77-29.us-east-2.compute.amazonaws.com/parse"
         })
         
@@ -47,12 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // PFFacebookUtils.initializeFacebook()
         // ****************************************************************************
 
-        PFUser.enableAutomaticUser()
+        //PFUser.enableAutomaticUser()
 
         let defaultACL = PFACL();
 
         // If you would like all objects to be private by default, remove this line.
         defaultACL.getPublicReadAccess = true
+        defaultACL.getPublicWriteAccess = true
 
         PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
 

@@ -11,37 +11,168 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController {
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    var signupMode = true
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signupOrLoginButtonLabel: UIButton!
+    
+    @IBAction func signupOrLoginButton(_ sender: Any) {
         
-        let testObject = PFObject(className: "TestObject2")
-        
-        testObject["foo"] = "bar"
-        
-        testObject.saveInBackground { (success, error) -> Void in
+        if usernameTextField.text == "" || passwordTextField.text == "" {
             
-            // added test for success 11th July 2016
+            displayAlert(title: "Error in form", message: "A username and password are required")
             
-            if success {
+        } else {
+            
+            if signupMode {
                 
-                print("Object has been saved.")
+                let user = PFUser()
                 
-            } else {
+                user.username = usernameTextField.text
+                user.password = passwordTextField.text
                 
-                if error != nil {
+                user["isDriver"] = isDriver.isOn
+                
+                user.signUpInBackground(block: { (success, error) in
                     
-                    print (error)
+                    if let error = error as NSError? {
+                        
+                        var DisplayedErrorMessage = "Something wen't wrong, please try again later"
+                        
+                        if let parseError = error.userInfo["error"] as? String {
+                            
+                            DisplayedErrorMessage = String(parseError)
+                            
+                        }
+                        
+                        self.displayAlert(title: "Signup Error", message: DisplayedErrorMessage)
+                        
+                    } else {
+                        
+                        print("Sign up successful")
+                        
+                        if let isDriver = PFUser.current()?["isDriver"] as? Bool {
+                           
+                            if isDriver {
+                                
+                                print("This user is a driver")
+                                
+                            } else { //User is a rider
+                                
+                                self.performSegue(withIdentifier: "showRiderViewController", sender: self)
+                                
+                            }
+                            
+                        }
+                        
+                    }
                     
-                } else {
                     
-                    print ("Error")
-                }
+                    
+                })
+                
+            } else { //login Mode
+                
+                PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!, block: { (user, error) in
+                    
+                    if let error = error as NSError? {
+                        
+                        var DisplayedErrorMessage = "Something wen't wrong, please try again later"
+                        
+                        if let parseError = error.userInfo["error"] as? String {
+                            
+                            DisplayedErrorMessage = String(parseError)
+                            
+                        }
+                        
+                        self.displayAlert(title: "Signup Error", message: DisplayedErrorMessage)
+                        
+                    } else {
+                        
+                        print("Log in successful")
+                        
+                        if let isDriver = PFUser.current()?["isDriver"] as? Bool {
+                            
+                            if isDriver {
+                                
+                                print("This user is a driver")
+                                
+                            } else { //User is a rider
+                                
+                                self.performSegue(withIdentifier: "showRiderViewController", sender: self)
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                })
                 
             }
             
         }
+        
+    }
+    @IBOutlet weak var isDriver: UISwitch!
+    
+    @IBOutlet weak var switchSignupModeLabel: UIButton!
+    @IBAction func switchesSignupMode(_ sender: Any) {
+        
+        if signupMode == true {
+            
+            signupOrLoginButtonLabel.setTitle("Log in", for: [])
+            
+            switchSignupModeLabel.setTitle("Switch to Sign up", for: [])
+            
+            signupMode = false
+            
+        } else {
+            
+            signupOrLoginButtonLabel.setTitle("Sign up", for: [])
+            
+            switchSignupModeLabel.setTitle("Switch to Log in", for: [])
+            
+            signupMode = true
+            
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let isDriver = PFUser.current()?["isDriver"] as? Bool {
+            
+            if isDriver {
+                
+                print("This user is a driver")
+                
+            } else { //User is a rider
+                
+                self.performSegue(withIdentifier: "showRiderViewController", sender: self)
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+       
         
     }
 
