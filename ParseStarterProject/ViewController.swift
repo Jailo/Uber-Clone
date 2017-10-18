@@ -127,10 +127,17 @@ class ViewController: UIViewController {
     }
     @IBOutlet weak var isDriver: UISwitch!
     
+    @IBOutlet weak var riderLabel: UILabel!
+    
+    @IBOutlet weak var driverLabel: UILabel!
+    
+    @IBOutlet weak var riderOrDriverLabel: UILabel!
+    
     @IBOutlet weak var switchSignupModeLabel: UIButton!
+    
     @IBAction func switchesSignupMode(_ sender: Any) {
         
-        if signupMode == true {
+        if signupMode == true { //Switch to log in mode
             
             signupOrLoginButtonLabel.setTitle("Log in", for: [])
             
@@ -138,13 +145,29 @@ class ViewController: UIViewController {
             
             signupMode = false
             
-        } else {
+            isDriver.isHidden = true
+            
+            riderLabel.isHidden = true
+            
+            driverLabel.isHidden = true
+            
+            riderOrDriverLabel.isHidden = true
+            
+        } else { //Switch to sign up mode
             
             signupOrLoginButtonLabel.setTitle("Sign up", for: [])
             
             switchSignupModeLabel.setTitle("Switch to Log in", for: [])
             
             signupMode = true
+            
+            isDriver.isHidden = false
+            
+            riderLabel.isHidden = false
+            
+            driverLabel.isHidden = false
+            
+            riderOrDriverLabel.isHidden = false
             
         }
     }

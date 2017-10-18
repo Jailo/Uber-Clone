@@ -19,6 +19,7 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		FA3926E11F91229600A92BC5 /* uber.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3926E01F91229600A92BC5 /* uber.jpg */; };
 		FA3926E31F9130C100A92BC5 /* uber-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA3926E21F9130C100A92BC5 /* uber-image.jpg */; };
+		FA3926E51F95357C00A92BC5 /* RiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3926E41F95357C00A92BC5 /* RiderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		FA3926E01F91229600A92BC5 /* uber.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = uber.jpg; path = ../../../../Downloads/uber.jpg; sourceTree = "<group>"; };
 		FA3926E21F9130C100A92BC5 /* uber-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "uber-image.jpg"; path = "../../../../Downloads/uber-image.jpg"; sourceTree = "<group>"; };
+		FA3926E41F95357C00A92BC5 /* RiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				FA3926E41F95357C00A92BC5 /* RiderViewController.swift */,
 				FA3926E01F91229600A92BC5 /* uber.jpg */,
 				FA3926E21F9130C100A92BC5 /* uber-image.jpg */,
 			);
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				FA3926E51F95357C00A92BC5 /* RiderViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
