@@ -36,6 +36,8 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         
         if riderRequestActive == true {
             
+            displayAlert(title: "Uber request canceled", message: "You have canceled your uber")
+            
             callAnUberButton.setTitle("Call an Uber", for: [])
             
             riderRequestActive = false
@@ -61,6 +63,8 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         } else {
         
         if userLocation.latitude != 0 && userLocation.longitude != 0{
+            
+            displayAlert(title: "You have called an Uber", message: "Your Uber should arrive shortly")
             
             self.callAnUberButton.setTitle("Cancel Uber", for: [])
             
@@ -105,6 +109,8 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         
         if segue.identifier == "logoutSegue" {
         
+            locationManager.stopUpdatingLocation()
+            
             PFUser.logOut()
             
         }
@@ -121,6 +127,37 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         locationManager.requestWhenInUseAuthorization()
         
         locationManager.startUpdatingLocation()
+        
+        callAnUberButton.isHidden = true
+        
+        let query = PFQuery(className: "RiderRequest")
+        
+        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+        
+        query.findObjectsInBackground(block: { (objects, error) in
+            
+            if let riderRequests = objects {
+                
+                if riderRequests.count != 0 {
+                    
+                self.riderRequestActive = true
+                
+                self.callAnUberButton.setTitle("Cancel Uber", for: [])
+                
+                print(riderRequests)
+                    
+                } else {
+                    
+                    self.callAnUberButton.setTitle("Call an Uber", for: [])
+                    
+                    self.riderRequestActive = false
+                    
+                }
+            }
+          
+            self.callAnUberButton.isHidden = false
+            
+        })
         
     }
     
@@ -144,10 +181,34 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             
             self.map.addAnnotation(annotation)
             
+            //Updates users location
+            
+            
+            let query = PFQuery(className: "RiderRequest")
+            
+            query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+            
+            query.findObjectsInBackground(block: { (objects, error) in
+                
+                if let riderRequests = objects {
+                    
+                    for riderRequest in riderRequests {
+                        
+                        riderRequest["location"] = PFGeoPoint(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+                       
+                        riderRequest.saveInBackground()
+                        
+                    }
+                    
+                }
+                
+            })
+            
         }
         
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

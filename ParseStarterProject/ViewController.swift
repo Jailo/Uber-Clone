@@ -66,7 +66,8 @@ class ViewController: UIViewController {
                            
                             if isDriver {
                                 
-                                print("This user is a driver")
+                                self.performSegue(withIdentifier: "showDriverViewController", sender: self)
+
                                 
                             } else { //User is a rider
                                 
@@ -106,7 +107,7 @@ class ViewController: UIViewController {
                             
                             if isDriver {
                                 
-                                print("This user is a driver")
+                                 self.performSegue(withIdentifier: "showDriverViewController", sender: self)
                                 
                             } else { //User is a rider
                                 
@@ -178,7 +179,7 @@ class ViewController: UIViewController {
             
             if isDriver {
                 
-                print("This user is a driver")
+                 self.performSegue(withIdentifier: "showDriverViewController", sender: self)
                 
             } else { //User is a rider
                 

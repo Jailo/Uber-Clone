@@ -140,6 +140,7 @@
                         <outlet property="switchSignupModeLabel" destination="VZJ-GJ-iv1" id="C5o-PN-7aE"/>
                         <outlet property="usernameTextField" destination="lBU-A8-jfT" id="J5c-eI-IGx"/>
                         <segue destination="CQT-j5-xS5" kind="show" identifier="showRiderViewController" id="WUi-U8-VVN"/>
+                        <segue destination="JPD-ZG-mbE" kind="show" identifier="showDriverViewController" id="W9A-JH-jt8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -201,10 +202,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlG-3c-Tjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713.04347826086962" y="128.80434782608697"/>
+            <point key="canvasLocation" x="668" y="-263"/>
+        </scene>
+        <!--Uber-->
+        <scene sceneID="WTe-pl-A6G">
+            <objects>
+                <tableViewController id="AlE-wO-8hC" customClass="DriverViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DGw-4m-gKj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="a1d-El-fMh">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a1d-El-fMh" id="i9M-sd-rHj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AlE-wO-8hC" id="5rW-Hr-58b"/>
+                            <outlet property="delegate" destination="AlE-wO-8hC" id="GT4-xJ-20F"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Uber" id="aiN-8X-Mvz">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Bi1-SV-sfD">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="driverLogoutSegue" id="xR2-M8-XxK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="966-Qh-pVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="410"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GD2-7A-X4I">
+            <objects>
+                <navigationController id="JPD-ZG-mbE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IBL-gN-s9q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AlE-wO-8hC" kind="relationship" relationship="rootViewController" id="7zv-Ho-xVC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2v-RJ-sLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="410"/>
         </scene>
     </scenes>
     <resources>
         <image name="uber.jpg" width="736" height="1308"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xR2-M8-XxK"/>
+    </inferredMetricsTieBreakers>
 </document>
