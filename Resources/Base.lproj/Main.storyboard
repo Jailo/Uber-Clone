@@ -166,8 +166,11 @@
                                     <action selector="callAnUber:" destination="CQT-j5-xS5" eventType="touchUpInside" id="WyI-f0-3vt"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eve-TT-xm7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="625"/>
+                            </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vt2-gf-Js2">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Uber" id="8O7-XP-Tct">
                                         <barButtonItem key="leftBarButtonItem" title="Log out" id="Vn2-SC-POA">
@@ -178,21 +181,18 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eve-TT-xm7">
-                                <rect key="frame" x="0.0" y="64" width="414" height="605"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Vt2-gf-Js2" secondAttribute="trailing" id="0Dq-on-1KM"/>
                             <constraint firstItem="eve-TT-xm7" firstAttribute="leading" secondItem="RQl-pj-7m8" secondAttribute="leading" id="7J0-oC-y16"/>
                             <constraint firstItem="6Pu-pC-bmO" firstAttribute="centerX" secondItem="RQl-pj-7m8" secondAttribute="centerX" id="FN9-1I-qgW"/>
                             <constraint firstAttribute="trailing" secondItem="eve-TT-xm7" secondAttribute="trailing" id="GdA-MI-n6j"/>
-                            <constraint firstItem="Vt2-gf-Js2" firstAttribute="top" secondItem="lj1-al-Wd4" secondAttribute="bottom" id="e10-n9-zLn"/>
-                            <constraint firstItem="Vt2-gf-Js2" firstAttribute="leading" secondItem="RQl-pj-7m8" secondAttribute="leading" id="hWV-EQ-xzM"/>
+                            <constraint firstItem="Vt2-gf-Js2" firstAttribute="leading" secondItem="RQl-pj-7m8" secondAttribute="leading" id="WbU-Go-Jn5"/>
+                            <constraint firstItem="Vt2-gf-Js2" firstAttribute="top" secondItem="RQl-pj-7m8" secondAttribute="top" id="YYT-vo-WqD"/>
+                            <constraint firstAttribute="trailing" secondItem="Vt2-gf-Js2" secondAttribute="trailing" id="dyy-si-9gC"/>
                             <constraint firstItem="6Pu-pC-bmO" firstAttribute="top" secondItem="eve-TT-xm7" secondAttribute="bottom" constant="17" id="mbx-zN-Q2v"/>
                             <constraint firstItem="BIf-Cb-tOg" firstAttribute="top" secondItem="6Pu-pC-bmO" secondAttribute="bottom" constant="20" id="pK8-1y-iMe"/>
-                            <constraint firstItem="eve-TT-xm7" firstAttribute="top" secondItem="Vt2-gf-Js2" secondAttribute="bottom" id="pn7-5X-sVt"/>
+                            <constraint firstItem="eve-TT-xm7" firstAttribute="top" secondItem="Vt2-gf-Js2" secondAttribute="bottom" id="ya0-0x-6Nh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -202,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlG-3c-Tjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="-263"/>
+            <point key="canvasLocation" x="666.66666666666674" y="-263.31521739130437"/>
         </scene>
         <!--Uber-->
         <scene sceneID="WTe-pl-A6G">
@@ -220,6 +220,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Yem-tO-acc" kind="show" identifier="showRiderLocationViewController" id="CoD-zZ-kN6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -238,6 +241,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="966-Qh-pVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1586" y="410"/>
+        </scene>
+        <!--Rider Location View Controller-->
+        <scene sceneID="Ta1-Lo-sWg">
+            <objects>
+                <viewController id="Yem-tO-acc" customClass="RiderLocationViewController" customModule="ParseStarterProject_Swift" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jIe-jZ-E9y"/>
+                        <viewControllerLayoutGuide type="bottom" id="gWc-KP-3DD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="biG-kP-voj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eIF-Gf-n6U">
+                                <rect key="frame" x="0.0" y="46" width="414" height="622"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhL-g1-sYr">
+                                <rect key="frame" x="153" y="686" width="109" height="30"/>
+                                <state key="normal" title="Accept Request"/>
+                                <connections>
+                                    <action selector="acceptRequest:" destination="Yem-tO-acc" eventType="touchUpInside" id="rOb-uz-fZz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eIF-Gf-n6U" secondAttribute="trailing" id="3LA-TJ-RjT"/>
+                            <constraint firstItem="FhL-g1-sYr" firstAttribute="top" secondItem="eIF-Gf-n6U" secondAttribute="bottom" constant="18" id="3aO-dd-5lu"/>
+                            <constraint firstItem="eIF-Gf-n6U" firstAttribute="leading" secondItem="biG-kP-voj" secondAttribute="leading" id="6FO-22-6Nk"/>
+                            <constraint firstItem="FhL-g1-sYr" firstAttribute="centerX" secondItem="biG-kP-voj" secondAttribute="centerX" id="NEj-4r-uaf"/>
+                            <constraint firstItem="eIF-Gf-n6U" firstAttribute="top" secondItem="biG-kP-voj" secondAttribute="top" constant="46" id="YmK-2i-nxk"/>
+                            <constraint firstItem="gWc-KP-3DD" firstAttribute="top" secondItem="FhL-g1-sYr" secondAttribute="bottom" constant="20" id="and-U1-Bw5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="acceptRequestButton" destination="FhL-g1-sYr" id="Yke-ot-PJP"/>
+                        <outlet property="map" destination="eIF-Gf-n6U" id="8cX-xC-11T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JLM-Yg-UBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2329" y="409"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GD2-7A-X4I">

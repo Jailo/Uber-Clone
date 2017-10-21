@@ -13,15 +13,35 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     
-    var usernameRequest = [String]()
+    var requestUsernames = [String]()
+    
+    var requestLocations = [CLLocationCoordinate2D]()
+    
+    var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "driverLogoutSegue" {
             
+            locationManager.stopUpdatingLocation()
+            
             PFUser.logOut()
             
             self.navigationController?.isNavigationBarHidden = true
+            
+        } else if segue.identifier == "showRiderLocationViewController" {
+            
+        
+            if let destination = segue.destination as? RiderLocationViewController {
+                
+                if let row = tableView.indexPathForSelectedRow?.row {
+                    
+                    destination.requestLocation = requestLocations[row]
+                    
+                    destination.requestUsername = requestUsernames[row]
+                }
+                
+            }
             
         }
         
@@ -47,6 +67,8 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
         
         if let location = manager.location?.coordinate {
             
+            userLocation = location
+            
             let query = PFQuery(className: "RiderRequest")
             
             query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: location.latitude, longitude: location.longitude))
@@ -57,15 +79,22 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
                 
                 if let riderRequests = object {
                     
+                    self.requestUsernames.removeAll()
+                    self.requestLocations.removeAll()
+                    
                     for riderRequest in riderRequests {
                         
                         if let username = riderRequest["username"] as? String {
                             
-                            self.usernameRequest.append(username)
+                            self.requestUsernames.append(username)
+                            
+                            self.requestLocations.append(CLLocationCoordinate2D(latitude: (riderRequest["location"] as AnyObject).latitude, longitude: (riderRequest["location"] as AnyObject).longitude))
                             
                         }
                         
                     }
+                    
+                    self.tableView.reloadData()
                     
                 }
                 
@@ -89,7 +118,7 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return usernameRequest.count
+        return requestUsernames.count
     }
 
     
@@ -98,7 +127,15 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
 
         // Configure the cell...
         
-        cell.textLabel?.text = usernameRequest[indexPath.row]
+        let driverCLLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+        
+        let riderLocation = CLLocation(latitude: requestLocations[indexPath.row].longitude, longitude: requestLocations[indexPath.row].longitude)
+        
+        let distance = driverCLLocation.distance(from: riderLocation) / 1000
+        
+        let roundDistance = round(distance * 100) / 100
+        
+        cell.textLabel?.text = requestUsernames[indexPath.row] + " - \(roundDistance) km away"
 
         return cell
     }
