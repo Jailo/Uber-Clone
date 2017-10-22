@@ -21,6 +21,51 @@ class RiderLocationViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var acceptRequestButton: UIButton!
     
     @IBAction func acceptRequest(_ sender: Any) {
+        
+        let query = PFQuery(className: "RiderRequest")
+        
+        query.whereKey("username", equalTo: requestUsername)
+        
+        query.findObjectsInBackground { (objects, error) in
+            
+            if let riderRequests = objects {
+                
+                for riderRequest in riderRequests {
+                    
+                    riderRequest["driverResponded"] = PFUser.current()?["username"]
+                    
+                    riderRequest.saveInBackground()
+                    
+                    let riderCLLocation = CLLocation(latitude: self.requestLocation.latitude, longitude: self.requestLocation.longitude)
+                    
+                    CLGeocoder().reverseGeocodeLocation(riderCLLocation, completionHandler: { (placemark, error) in
+                        
+                        if let placemarks = placemark {
+                            
+                            if placemarks.count > 0 {
+                                
+                                let mKPlacemark = MKPlacemark(placemark: placemarks[0])
+                                
+                                let mapItem = MKMapItem(placemark: mKPlacemark)
+                                
+                                mapItem.name = self.requestUsername
+                                
+                                let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                                
+                                mapItem.openInMaps(launchOptions: launchOptions)
+                                
+                            }
+                            
+                        }
+                        
+                    })
+                    
+                }
+                
+            }
+            
+        }
+        
     }
     
     override func viewDidLoad() {

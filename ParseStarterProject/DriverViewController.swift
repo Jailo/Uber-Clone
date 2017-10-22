@@ -86,9 +86,13 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
                         
                         if let username = riderRequest["username"] as? String {
                             
-                            self.requestUsernames.append(username)
+                            if riderRequest["driverResponded"] == nil {
+                
+                                self.requestUsernames.append(username)
                             
-                            self.requestLocations.append(CLLocationCoordinate2D(latitude: (riderRequest["location"] as AnyObject).latitude, longitude: (riderRequest["location"] as AnyObject).longitude))
+                                self.requestLocations.append(CLLocationCoordinate2D(latitude: (riderRequest["location"] as AnyObject).latitude, longitude: (riderRequest["location"] as AnyObject).longitude))
+                            
+                            }
                             
                         }
                         
@@ -131,11 +135,11 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
         
         let riderLocation = CLLocation(latitude: requestLocations[indexPath.row].longitude, longitude: requestLocations[indexPath.row].longitude)
         
-        let distance = driverCLLocation.distance(from: riderLocation) / 1000
+        let distance = driverCLLocation.distance(from: riderLocation) // 1000
         
         let roundDistance = round(distance * 100) / 100
         
-        cell.textLabel?.text = requestUsernames[indexPath.row] + " - \(roundDistance) km away"
+        cell.textLabel?.text = requestUsernames[indexPath.row] + " - \(distance) km away"
 
         return cell
     }
