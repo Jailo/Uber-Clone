@@ -22,7 +22,7 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         self.present(alertController, animated: true, completion: nil)
     }
     
-    var riderRequestActive = true
+    var riderRequestActive = false
 
     var locationManager = CLLocationManager()
     
@@ -190,6 +190,52 @@ class RiderViewController: UIViewController, MKMapViewDelegate, CLLocationManage
                         riderRequest["location"] = PFGeoPoint(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
                        
                         riderRequest.saveInBackground()
+                        
+                    }
+                    
+                }
+                
+            })
+            
+        }
+        
+        if riderRequestActive == true {
+            
+            let query = PFQuery(className: "RiderRequest")
+            
+            query.whereKey("username", equalTo: (PFUser.current()?.username!)!)
+            
+            query.findObjectsInBackground(block: { (objects, error) in
+                
+                if let riderRequests = objects {
+                    
+                    for riderRequest in riderRequests {
+                        
+                        if let driverUsername = riderRequest["driverResponded"] {
+                            
+                            let query = PFQuery(className: "DriverLocation")
+                            
+                            query.whereKey("username", equalTo: driverUsername)
+                            
+                            query.findObjectsInBackground(block: { (objects, error) in
+                                
+                                if let driverLocations = objects {
+                                    
+                                    for driverLocationObject in driverLocations {
+                                     
+                                        if let driverLocation = driverLocationObject["location"] as? PFGeoPoint {
+                                            
+                                            self.callAnUberButton.setTitle("Your Uber is on it's way!", for: [])
+                                          
+                                        } 
+                                        
+                                    }
+                                    
+                                }
+                
+                            })
+                            
+                        }
                         
                     }
                     

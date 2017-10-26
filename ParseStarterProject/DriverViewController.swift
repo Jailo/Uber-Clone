@@ -69,6 +69,26 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
             
             userLocation = location
             
+            let driverLocationQuery = PFQuery(className: "RiderRequest")
+            
+            driverLocationQuery.whereKey("driverResponded", equalTo: (PFUser.current()?.username)!)
+            
+            driverLocationQuery.findObjectsInBackground(block: { (objects, error) in
+                
+                if let riderRequests = objects {
+                    
+                    for riderRequest in riderRequests {
+                    
+                        riderRequest["driverLocation"] = PFGeoPoint(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+                        
+                        riderRequest.saveInBackground()
+                        
+                    }
+                    
+                }
+                
+            })
+            
             let query = PFQuery(className: "RiderRequest")
             
             query.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: location.latitude, longitude: location.longitude))
@@ -133,13 +153,13 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
         
         let driverCLLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         
-        let riderLocation = CLLocation(latitude: requestLocations[indexPath.row].longitude, longitude: requestLocations[indexPath.row].longitude)
+        let riderLocation = CLLocation(latitude: requestLocations[indexPath.row].latitude, longitude: requestLocations[indexPath.row].longitude)
         
         let distance = driverCLLocation.distance(from: riderLocation) // 1000
         
         let roundDistance = round(distance * 100) / 100
         
-        cell.textLabel?.text = requestUsernames[indexPath.row] + " - \(distance) km away"
+        cell.textLabel?.text = requestUsernames[indexPath.row] + " - \(roundDistance) km away"
 
         return cell
     }
