@@ -69,25 +69,37 @@ class DriverViewController: UITableViewController, CLLocationManagerDelegate {
             
             userLocation = location
             
-            let driverLocationQuery = PFQuery(className: "RiderRequest")
+            let driverLocationQuery = PFQuery(className: "DriverLocation")
             
-            driverLocationQuery.whereKey("driverResponded", equalTo: (PFUser.current()?.username)!)
+            driverLocationQuery.whereKey("username", equalTo: (PFUser.current()?.username)!)
             
             driverLocationQuery.findObjectsInBackground(block: { (objects, error) in
                 
-                if let riderRequests = objects {
+                
+                if let driverLocations = objects {
                     
-                    for riderRequest in riderRequests {
                     
-                        riderRequest["driverLocation"] = PFGeoPoint(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+                        for driverLocation in driverLocations {
+                    
+                        driverLocation["location"] = PFGeoPoint(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
                         
-                        riderRequest.saveInBackground()
+                        driverLocation.deleteInBackground()
                         
-                    }
+                     }
                     
                 }
                 
+                
+                let driverLocation = PFObject(className: "DriverLocation")
+                
+                driverLocation["username"] = PFUser.current()?.username
+                
+                driverLocation["location"] = PFGeoPoint(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+                
+                driverLocation.saveInBackground()
+                
             })
+            
             
             let query = PFQuery(className: "RiderRequest")
             
