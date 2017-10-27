@@ -26,51 +26,51 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBU-A8-jfT">
-                                <rect key="frame" x="20" y="182" width="374" height="30"/>
+                                <rect key="frame" x="20" y="138" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="en6-NA-PGr">
-                                <rect key="frame" x="183" y="302" width="51" height="31"/>
+                                <rect key="frame" x="183" y="258" width="51" height="31"/>
                                 <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8r-Uo-RYD">
-                                <rect key="frame" x="108" y="307" width="40" height="21"/>
+                                <rect key="frame" x="108" y="263" width="40" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-AH-4SF">
-                                <rect key="frame" x="273" y="307" width="46" height="21"/>
+                                <rect key="frame" x="273" y="263" width="46" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you a Rider, or a driver?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ma-ep-ybO">
-                                <rect key="frame" x="102" y="265" width="211" height="21"/>
+                                <rect key="frame" x="102" y="221" width="211" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B97-Zw-mHn">
-                                <rect key="frame" x="199" y="383" width="16" height="21"/>
+                                <rect key="frame" x="199" y="339" width="16" height="21"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVU-gQ-8Io">
-                                <rect key="frame" x="20" y="220" width="374" height="30"/>
+                                <rect key="frame" x="20" y="176" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZJ-GJ-iv1">
-                                <rect key="frame" x="154" y="412" width="106" height="30"/>
+                                <rect key="frame" x="154" y="368" width="106" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Switch to Login">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -80,13 +80,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uber" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-Dw-3LS">
-                                <rect key="frame" x="171" y="92" width="72" height="40"/>
+                                <rect key="frame" x="171" y="48" width="72" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4o-Kl-WF8">
-                                <rect key="frame" x="170" y="341" width="74" height="30"/>
+                                <rect key="frame" x="170" y="297" width="74" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="QGe-jQ-ClM"/>
@@ -160,9 +160,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Pu-pC-bmO">
-                                <rect key="frame" x="105" y="686" width="205" height="30"/>
+                                <rect key="frame" x="20" y="686" width="374" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="205" id="Fwg-04-N64"/>
+                                    <constraint firstAttribute="width" constant="374" id="34E-P5-YPq"/>
                                 </constraints>
                                 <state key="normal" title="Call an Uber"/>
                                 <connections>
@@ -188,13 +188,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eve-TT-xm7" firstAttribute="leading" secondItem="RQl-pj-7m8" secondAttribute="leading" id="7J0-oC-y16"/>
-                            <constraint firstItem="6Pu-pC-bmO" firstAttribute="centerX" secondItem="RQl-pj-7m8" secondAttribute="centerX" id="FN9-1I-qgW"/>
+                            <constraint firstItem="BIf-Cb-tOg" firstAttribute="top" secondItem="6Pu-pC-bmO" secondAttribute="bottom" constant="20" id="DAk-ev-vyF"/>
                             <constraint firstAttribute="trailing" secondItem="eve-TT-xm7" secondAttribute="trailing" id="GdA-MI-n6j"/>
                             <constraint firstItem="Vt2-gf-Js2" firstAttribute="leading" secondItem="RQl-pj-7m8" secondAttribute="leading" id="WbU-Go-Jn5"/>
                             <constraint firstItem="Vt2-gf-Js2" firstAttribute="top" secondItem="RQl-pj-7m8" secondAttribute="top" id="YYT-vo-WqD"/>
+                            <constraint firstItem="6Pu-pC-bmO" firstAttribute="top" secondItem="eve-TT-xm7" secondAttribute="bottom" constant="17" id="dJH-t0-lub"/>
                             <constraint firstAttribute="trailing" secondItem="Vt2-gf-Js2" secondAttribute="trailing" id="dyy-si-9gC"/>
-                            <constraint firstItem="6Pu-pC-bmO" firstAttribute="top" secondItem="eve-TT-xm7" secondAttribute="bottom" constant="17" id="mbx-zN-Q2v"/>
-                            <constraint firstItem="BIf-Cb-tOg" firstAttribute="top" secondItem="6Pu-pC-bmO" secondAttribute="bottom" constant="20" id="pK8-1y-iMe"/>
+                            <constraint firstItem="6Pu-pC-bmO" firstAttribute="centerX" secondItem="RQl-pj-7m8" secondAttribute="centerX" id="jU1-AT-lR4"/>
                             <constraint firstItem="eve-TT-xm7" firstAttribute="top" secondItem="Vt2-gf-Js2" secondAttribute="bottom" id="ya0-0x-6Nh"/>
                         </constraints>
                     </view>
@@ -220,7 +220,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a1d-El-fMh" id="i9M-sd-rHj">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
